@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/products";
-
+const API_URL = import.meta.env.VITE_API_URL || "https://code-vector-4d20yymul-sania-s-tech.vercel.app/products";
 function App() {
     const [products, setProducts] = useState([]);
     const [cursor, setCursor] = useState(null);
