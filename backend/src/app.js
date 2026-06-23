@@ -1,16 +1,12 @@
 const pool = require("./db/db");
 const express= require('express');
-const cors=require('cors');
 const productRoutes = require("./routes/productRoutes");
 const app= express();
 
+const cors = require("cors");
+
 app.use(cors({
-  origin: [
-    "http://localhost:5173",
-    "https://code-vector-qx98.vercel.app"
-  ],
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
+  origin: "*"
 }));
 
 app.use(express.json());
