@@ -8,10 +8,24 @@ const cors = require("cors");
   console.log("REQUEST HIT:", req.method, req.url);
   next();
 });
-app.use(cors({
-  origin: "*"
-}));
+const cors = require("cors");
 
+const corsOptions = {
+  origin: [
+    "https://code-vector-f3h3.vercel.app",
+    "https://code-vector-qx98.vercel.app"
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+};
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "*");
+  next();
+});
+
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 app.use(express.json());
 //app.use("/products", productRoutes);
 app.get("/products", (req, res) => {
