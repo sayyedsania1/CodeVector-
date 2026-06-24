@@ -4,13 +4,19 @@ const productRoutes = require("./routes/productRoutes");
 const app= express();
 
 const cors = require("cors");
-
+ app.use((req, res, next) => {
+  console.log("REQUEST HIT:", req.method, req.url);
+  next();
+});
 app.use(cors({
   origin: "*"
 }));
 
 app.use(express.json());
-app.use("/products", productRoutes);
+//app.use("/products", productRoutes);
+app.get("/products", (req, res) => {
+  res.json({ ok: true });
+});
 app.get('/',(req,res)=>{
     res.json({
     success: true,
