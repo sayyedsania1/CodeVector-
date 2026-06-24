@@ -14,7 +14,6 @@ function App() {
   const [category, setCategory] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // Fetch products (pagination + category safe)
   const fetchProducts = async (reset = false, selectedCategory = category, currentCursor = cursor) => {
     try {
       setLoading(true);
@@ -45,18 +44,16 @@ function App() {
     }
   };
 
-  // initial load
   useEffect(() => {
     fetchProducts(true, "", null);
   }, []);
 
-  // category change
   const handleCategoryChange = async (e) => {
     const selectedCategory = e.target.value;
 
     setCategory(selectedCategory);
     setCursor(null);
-    setProducts([]); // 🔥 IMPORTANT FIX
+    setProducts([]);
 
     await fetchProducts(true, selectedCategory, null);
   };

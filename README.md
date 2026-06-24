@@ -23,7 +23,7 @@ A full-stack product browsing application built for the CodeVector Internship Ta
 - Axios
 
 ### Hosting
-- Backend: Render
+- Backend: Vercel
 - Database: Neon
 - Frontend: Vercel
 
